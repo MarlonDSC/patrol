@@ -491,27 +491,27 @@
     }
 
     func enableWiFi() throws {
-      try runControlCenterAction("enabling wifi") {
-        let toggle = self.springboard.switches["wifi-button"]
+      try runControlCenterAction("enabling Wi-Fi") {
+        let toggle = self.springboard.switches["Wi-Fi"]
         let exists = toggle.waitForExistence(timeout: self.timeout)
         guard exists else {
-          throw PatrolError.viewNotExists("wifi-button")
+          throw PatrolError.viewNotExists("Wi-Fi")
         }
 
         if toggle.value! as! String == "0" {
           toggle.tap()
         } else {
-          Logger.shared.i("wifi is already enabled")
+          Logger.shared.i("Wi-Fi is already enabled")
         }
       }
     }
 
     func disableWiFi() throws {
-      try runControlCenterAction("disabling wifi") {
-        let toggle = self.springboard.switches["wifi-button"]
+      try runControlCenterAction("disabling Wi-Fi") {
+        let toggle = self.springboard.switches["Wi-Fi"]
         let exists = toggle.waitForExistence(timeout: self.timeout)
         guard exists else {
-          throw PatrolError.viewNotExists("wifi-button")
+          throw PatrolError.viewNotExists("Wi-Fi")
         }
 
         if toggle.value! as! String == "1" {
@@ -519,7 +519,7 @@
           // Disabling wifi can cause a system alert to appear
           try self.acceptSystemAlertIfVisible()
         } else {
-          Logger.shared.i("wifi is already disabled")
+          Logger.shared.i("Wi-Fi is already disabled")
         }
       }
     }
